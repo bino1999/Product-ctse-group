@@ -23,11 +23,13 @@ jobs:
     - name: Install dependencies
       run: npm install
       working-directory: ./CourseManagementService
-    - name: Start the application
-      run: npm run start
+    - name: Start the application in the background
+      run: npm run start &
       working-directory: ./CourseManagementService
+    - name: Wait for the application to start
+      run: sleep 10
     - name: Run tests
       run: npm test
       working-directory: ./CourseManagementService
-      env:
-        CI: true
+    - name: Kill the Node.js process
+      run: kill $(jobs -p) || true
