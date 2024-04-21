@@ -20,9 +20,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run start
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./CourseManagementService
+    - name: Start the application
+      run: npm run start
+      working-directory: ./CourseManagementService
     - name: Run tests
       run: npm test
+      working-directory: ./CourseManagementService
       env:
         CI: true
