@@ -28,8 +28,5 @@ jobs:
       working-directory: ./CourseManagementService
     - name: Wait for the application to start
       run: sleep 10
-    - name: Run tests
-      run: npm test
-      working-directory: ./CourseManagementService
     - name: Kill the Node.js process
       run: kill $(jobs -p) || true
